@@ -11,13 +11,18 @@ class ListManager {
 	function configure($config) {
 		$this->config = $config;
 		$this->id = md5(serialize($this->settings));
-		if (isset($_POST['search'])) {
+		if (isset($this->config['search'])) {
+			$hasGETValues = false;
 			foreach ($this->config['search'] as $k => $v) {
 				if (isset($_GET[$k])) {
-					$_POST[$k] = urldecode($_GET[urlencode($k) ]);
+					$hasGETValues = true;
+					$_POST[$k] = urldecode($_GET[urlencode($k)]);
 				}
 			}
-			$this->show_search = true;
+			if ($hasGETValues) {
+				$_POST['search'] = '';
+				$this->show_search = true;
+			}
 		}
 		if (isset($_POST['add'])) {
 			$this->show_add = true;
