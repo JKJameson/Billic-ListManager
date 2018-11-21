@@ -35,7 +35,7 @@ class ListManager {
 		if (!isset($this->config['search'])) {
 			return;
 		}
-		$return = '<div id="search-' . $this->id . '"' . ($this->show_search === true ? '' : ' style="display:none;"') . '><form method="POST" action="' . preg_replace('~/POST/(.*?)/~', '/', $_SERVER['REQUEST_URI']) . '"><table class="table table-striped"><tr><th colspan="6">' . (isset($this->config['search_title']) ? $this->config['search_title'] : 'Search') . '</th></tr><tr>';
+		$return = '<div id="search-' . $this->id . '"' . ($this->show_search === true ? '' : ' style="display:none;"') . '><form method="POST" action="' . preg_replace('~/POST/(.*?)/~', '/', $_SERVER['REQUEST_URI']) . '"><table class="table table-striped"><tr><th colspan="8">' . (isset($this->config['search_title']) ? $this->config['search_title'] : 'Search') . '</th></tr><tr>';
 		$i = 0;
 		foreach ($this->config['search'] as $setting => $type) {
 			$i++;
